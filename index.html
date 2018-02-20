@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Example APOD call</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <!--
+    <div id="preloader" class="container-fluid center col xl12 col l12 col m12 col s12">
+      <img src="assets/img/preloader.gif" alt="">
+    </div>
+    -->
+  <!-- Barra lateral -->
+  <ul id="slide-out" class="side-nav">
+    <li><div class="user-view">
+      <div class="background">
+        <img src="">
+      </div>
+      <a href="#!user"><img class="circle nav-logo" src="assets/img/Nasa-Logo-Transparent-Background-download.png"></a>
+      <a href="#!name"><span class="white-text name">John Doe</span></a>
+      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+
+    <div class="row">
+      <div class="col xl12 col l12 col m12 col s12 center second-screen">
+        <h1>Astronomy Picture Of The Day</h1>
+        <img class="responsive-img" id="apod_img_id" width="600px"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col xl12 col l12 col m12 col s12 second-screen">
+        <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="0"></iframe>
+        <p id="copyright"></p>
+        <h3 id="apod_title" class="center"></h3>
+        <p id="apod_explaination"></p>
+        <br/>
+      </div>
+    </div>
+
+    <div>
+      <input type="text" class="input-search">
+      <a class="waves-effect waves-light btn" id="search">button</a>
+    </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

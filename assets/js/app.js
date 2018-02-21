@@ -1,4 +1,4 @@
-// ppG7AIam3f9zIhAKFszTtKhYtvo5lUHx4wBiWTsM
+// KEY ppG7AIam3f9zIhAKFszTtKhYtvo5lUHx4wBiWTsM
 
 /*
 $(document).ready(function(){
@@ -13,12 +13,16 @@ $(document).ready(function(){
 */
 
 
+/*
+* La primera función busca una imagen por día, mañana cambiará a una nueva :)
+*/
+
 var url = "https://api.nasa.gov/planetary/apod?api_key=ppG7AIam3f9zIhAKFszTtKhYtvo5lUHx4wBiWTsM";
 
 
 $.ajax({
   url: url,
-  success: function(result){
+  success: function(result) {
     console.log(result);
   if("copyright" in result) {
     $("#copyright").text("Image Credits: " + result.copyright);
@@ -42,65 +46,42 @@ $.ajax({
 }
 });
 
-// Inicializacion de barra navegacion
-$(".button-collapse").sideNav();
 
 /*
 * Función para buscar imagenes y videos de la NASA, no muestra la imagen y el video de acuerdo
 * Al parámetro buscado
 */
-$('#search').click(function(){
+$('#search').click(function() {
   const inputValue = $('#input-search').val();
   const inputValueLower = inputValue.toLowerCase();
   $.ajax({
     url : `https://images-api.nasa.gov/search?q=${inputValueLower}`,
     type: 'GET',
     datatype: 'json',
-    success: function(result){
+    success: function(result) {
       console.log(result.collection.items);
       $.ajax({
       url: result.collection.items[0].href,
       type: 'GET',
       datatype: 'json',
-      success: function(result){
+      success: function(result) {
         /*
         * For each recibe cada elemento
         * Las condiciones del if permiten que al recibir un video quede "apendeado" en un iframe
         * En caso de ser una imagen se apendea en una etiqueta img.
         */
         result.forEach(el => {
-          if(el.indexOf('.mp4') === true) {
-          $('#image-container').append(`<iframe src="${el}" type="text/html" width="640" height="385" frameborder="0"></iframe>`);
-        } else {
-          $('#image-container').append(`<img class="responsive-img" src="${el}"/>`);
-        }
+            $('#image-container').append(`
+            <div class="col s12 xl12 col l12 col m12">
+            <div class="video-container">
+            <iframe class="responsive-video" controls autoplay="false" src="${el}" type="text/html" frameborder="0"></iframe>
+            </div>
+            </div>`);
         });
       }
     })
-    console.log(result);
     $('#image-container').empty();
     }
   })
 });
 
-var urlEarth = "https://api.nasa.gov/planetary/earth/imagery/?lon=100.75&lat=1.5&date=2017-02-01&cloud_score=True&api_key=ppG7AIam3f9zIhAKFszTtKhYtvo5lUHx4wBiWTsM";
-$('#search2').click(function(){
-$.ajax({
-  url: urlEarth,
-  success: function(result){
-    console.log(result);
-    if(result.media_type == "video") {
-      $("#earth_img_id").css("display", "none");
-      $("#earth_vid_id").attr("src", result.urlEarth);
-    }
-    else {
-      $("#earth_vid_id").css("display", "none");
-      $("#earth_img_id").attr("src", result.urlEarth);
-    }
-    $("#reqObject").text(urlEarth);
-    $("#returnObject").text(JSON.stringify(result, null, 4));
-    $("#earth_explaination").text(result.explanation);
-    $("#earth_title").text(result.title);
-    }
-  });
-});

@@ -44,6 +44,7 @@
       </div>
     </div>
 
+  <section id="search-section">
     <div class="container">
       <input type="text" id="input-search">
       <a class="waves-effect waves-light btn" id="search">search</a>
@@ -52,10 +53,29 @@
       <!-- Div que recibe la imagen de la búsqueda -->
       <iframe id="my_image" type="text/html" width="640" height="385" frameborder="0"></iframe>
     </div>
-
-    <div class="container">
-      <a class="waves-effect waves-light btn" id="search2">earth image</a>
+  </section>
+    
+  <section id="earth-section">
+    <div class="row">
+      <div class="col xl12 col l12 col m12 col s12 center" id="third-screen">
+        <h1>Earth</h1>
+        <a class="waves-effect waves-light btn" id="search2">earth image</a>
+        <img class="responsive-img" id="apod_img_id" width="600px"/>
+      </div>
     </div>
+    <div class="row">
+      <div class="container">
+        <div class="col xl12 col l12 col m12 col s12 second-screen">
+          <iframe id="earth_vid_id" type="text/html" width="640" height="385" frameborder="0"></iframe>
+          <p id="copyright"></p>
+          <h4 id="earth_title" class="center"></h4>
+          <p id="earth_explaination"></p>
+          <br/>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

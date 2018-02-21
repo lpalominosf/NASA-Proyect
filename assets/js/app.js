@@ -72,10 +72,23 @@ $('#search').click(function(){
 });
 
 var urlEarth = "https://api.nasa.gov/planetary/earth/imagery/?lon=100.75&lat=1.5&date=2017-02-01&cloud_score=True&api_key=ppG7AIam3f9zIhAKFszTtKhYtvo5lUHx4wBiWTsM";
-
+$('#search2').click(function(){
 $.ajax({
-  url: url,
+  url: urlEarth,
   success: function(result){
     console.log(result);
-  }
-})
+    if(result.media_type == "video") {
+      $("#earth_img_id").css("display", "none");
+      $("#earth_vid_id").attr("src", result.urlEarth);
+    }
+    else {
+      $("#earth_vid_id").css("display", "none");
+      $("#earth_img_id").attr("src", result.urlEarth);
+    }
+    $("#reqObject").text(urlEarth);
+    $("#returnObject").text(JSON.stringify(result, null, 4));
+    $("#earth_explaination").text(result.explanation);
+    $("#earth_title").text(result.title);
+    }
+  });
+});

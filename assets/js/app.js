@@ -46,8 +46,8 @@ $.ajax({
 $(".button-collapse").sideNav();
 
 /*
-* Función para buscar imagenes y videos de la NASA, no muestra la imagen, pero muestra el objeto con
-* Los datos
+* Función para buscar imagenes y videos de la NASA, no muestra la imagen y el video de acuerdo
+* Al parámetro buscado
 */
 $('#search').click(function(){
   const inputValue = $('#input-search').val();
@@ -63,23 +63,23 @@ $('#search').click(function(){
       type: 'GET',
       datatype: 'json',
       success: function(result){
+        /*
+        * For each recibe cada elemento
+        * Las condiciones del if permiten que al recibir un video quede "apendeado" en un iframe
+        * En caso de ser una imagen se apendea en una etiqueta img.
+        */
         result.forEach(el => {
           if(el.indexOf('.mp4') === true) {
           $('#image-container').append(`<iframe src="${el}" type="text/html" width="640" height="385" frameborder="0"></iframe>`);
         } else {
-          $('#image-container').append(`<img src="${el}"/>`);
+          $('#image-container').append(`<img class="responsive-img" src="${el}"/>`);
         }
         });
       }
-      
     })
     console.log(result);
     $('#image-container').empty();
-    const metadata = result.metadata;
-    const captions = result.captions;
-    const img1 = result.collection.items[0];
-    $("#my_image").attr("src", img1);
-  }
+    }
   })
 });
 

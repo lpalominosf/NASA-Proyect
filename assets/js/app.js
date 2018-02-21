@@ -45,7 +45,9 @@ $.ajax({
 // Inicializacion de barra navegacion
 $(".button-collapse").sideNav();
 
-
+/*
+* Función para buscar imagenes y videos de la NASA, no muestra la imagen, pero muestra el objeto con
+*/
 $('#search').click(function(){
   const inputValue = $('#input-search').val();
   const inputValueLower = inputValue.toLowerCase();
@@ -59,10 +61,10 @@ $('#search').click(function(){
   }).done(response).fail(error);
   function response(data) {
     $('#image-container').empty();
-    const nasaImg = data.href;
+    const nasaImg = data.asset;
     const metadata = data.metadata;
     const captions = data.captions;
-    $('#image-container').append(`<img class="nasa-image" src="" alt="${nasaImg}">`);
+    $('#image-container').append(`<img class="nasa-image" src="" alt="imagen-que-debiera-mostrar">`);
   }
   function error() {
     alert('Lo sentimos, ha ocurrido un error');

@@ -74,7 +74,7 @@ $('#search').click(function() {
             $('#image-container').append(`
             <div class="col s12 xl12 col l12 col m12">
             <div class="video-container">
-            <iframe class="responsive-video" controls autoplay="false" src="${el}" type="text/html" frameborder="0"></iframe>
+            <iframe class="responsive-video" controls autoplay="false" width="340" height="385" src="${el}" type="text/html" frameborder="0"></iframe>
             </div>
             </div>`);
         });

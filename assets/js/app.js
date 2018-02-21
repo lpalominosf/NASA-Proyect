@@ -50,6 +50,7 @@ $.ajax({
 /*
 * Función para buscar imagenes y videos de la NASA, no muestra la imagen y el video de acuerdo
 * Al parámetro buscado
+* La búsqueda se debe realizar en inglés
 */
 $('#search').click(function() {
   const inputValue = $('#input-search').val();
@@ -84,4 +85,3 @@ $('#search').click(function() {
     }
   })
 });
-

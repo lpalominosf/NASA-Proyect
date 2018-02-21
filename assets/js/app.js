@@ -4,10 +4,10 @@
 $(document).ready(function(){
   $('#status').delay(3000).fadeOut('slow');
   $('#preloader').delay(3000).fadeOut();
-  $('.second-screen').hide();
+  $('#second-screen').hide();
 
   setTimeout(function() {
-  $('.second-screen').show();
+  $('#second-screen').show();
   }, 3000);
 });
 */
@@ -55,8 +55,8 @@ $('#search').click(function(){
     url : `https://images-api.nasa.gov/search?q=${inputValueLower}`,
     type: 'GET',
     datatype: 'json',
-    success: function(results){
-      console.log(results);
+    success: function(result){
+      console.log(result);
     }
   }).done(response).fail(error);
   function response(data) {
@@ -70,3 +70,12 @@ $('#search').click(function(){
     alert('Lo sentimos, ha ocurrido un error');
   }
 });
+
+var urlEarth = "https://api.nasa.gov/planetary/earth/imagery/?lon=100.75&lat=1.5&date=2017-02-01&cloud_score=True&api_key=ppG7AIam3f9zIhAKFszTtKhYtvo5lUHx4wBiWTsM";
+
+$.ajax({
+  url: url,
+  success: function(result){
+    console.log(result);
+  }
+})

@@ -61,10 +61,10 @@ $('#search').click(function(){
   }).done(response).fail(error);
   function response(data) {
     $('#image-container').empty();
-    const nasaImg = data.asset;
+    const nasaImg = data.href;
     const metadata = data.metadata;
     const captions = data.captions;
-    $('#image-container').append(`<img class="nasa-image" src="" alt="imagen-que-debiera-mostrar">`);
+    $("#my_image").attr("src", nasaImg);
   }
   function error() {
     alert('Lo sentimos, ha ocurrido un error');

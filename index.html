@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Example APOD call</title>
+  <title>APOD</title>
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/img/Nasa-Logo-Transparent-Background-download.png" type="image/png">
 </head>
 <body>
   <!--
@@ -41,19 +42,25 @@
       </div>
     </div>
     <div class="row">
-      <div class="col xl12 col l12 col m12 col s12 second-screen">
-        <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="0"></iframe>
-        <p id="copyright"></p>
-        <h3 id="apod_title" class="center"></h3>
-        <p id="apod_explaination"></p>
-        <br/>
+      <div class="container">
+        <div class="col xl12 col l12 col m12 col s12 second-screen">
+          <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="0"></iframe>
+          <p id="copyright"></p>
+          <h3 id="apod_title" class="center"></h3>
+          <p id="apod_explaination"></p>
+          <br/>
+        </div>
       </div>
     </div>
 
-    <div>
-      <input type="text" class="input-search">
+    <div class="container">
+      <input type="text" id="input-search">
       <a class="waves-effect waves-light btn" id="search">button</a>
     </div>
+    <div class="container" id="image-container">
+      <!-- Div que recibe la imagen de la búsqueda -->
+    </div>
+
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>

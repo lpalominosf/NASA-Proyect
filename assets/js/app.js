@@ -47,5 +47,24 @@ $(".button-collapse").sideNav();
 
 
 $('#search').click(function(){
-  const 
+  const inputValue = $('#input-search').val();
+  const inputValueLower = inputValue.toLowerCase();
+  $.ajax({
+    url : `https://images-api.nasa.gov/search?q=${inputValueLower}`,
+    type: 'GET',
+    datatype: 'json',
+    success: function(results){
+      console.log(results);
+    }
+  }).done(response).fail(error);
+  function response(data) {
+    $('#image-container').empty();
+    const nasaImg = data.href;
+    const metadata = data.metadata;
+    const captions = data.captions;
+    $('#image-container').append(`<img class="nasa-image" src="" alt="${nasaImg}">`);
+  }
+  function error() {
+    alert('Lo sentimos, ha ocurrido un error');
+  }
 });

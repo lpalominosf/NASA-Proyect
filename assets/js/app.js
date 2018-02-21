@@ -47,6 +47,7 @@ $(".button-collapse").sideNav();
 
 /*
 * Función para buscar imagenes y videos de la NASA, no muestra la imagen, pero muestra el objeto con
+* Los datos
 */
 $('#search').click(function(){
   const inputValue = $('#input-search').val();
@@ -56,19 +57,30 @@ $('#search').click(function(){
     type: 'GET',
     datatype: 'json',
     success: function(result){
-      console.log(result);
-    }
-  }).done(response).fail(error);
-  function response(data) {
+      console.log(result.collection.items);
+      $.ajax({
+      url: result.collection.items[0].href,
+      type: 'GET',
+      datatype: 'json',
+      success: function(result){
+        result.forEach(el => {
+          if(el.indexOf('.mp4') === true) {
+          $('#image-container').append(`<iframe src="${el}" type="text/html" width="640" height="385" frameborder="0"></iframe>`);
+        } else {
+          $('#image-container').append(`<img src="${el}"/>`);
+        }
+        });
+      }
+      
+    })
+    console.log(result);
     $('#image-container').empty();
-    const nasaImg = data.href;
-    const metadata = data.metadata;
-    const captions = data.captions;
-    $("#my_image").attr("src", nasaImg);
+    const metadata = result.metadata;
+    const captions = result.captions;
+    const img1 = result.collection.items[0];
+    $("#my_image").attr("src", img1);
   }
-  function error() {
-    alert('Lo sentimos, ha ocurrido un error');
-  }
+  })
 });
 
 var urlEarth = "https://api.nasa.gov/planetary/earth/imagery/?lon=100.75&lat=1.5&date=2017-02-01&cloud_score=True&api_key=ppG7AIam3f9zIhAKFszTtKhYtvo5lUHx4wBiWTsM";
